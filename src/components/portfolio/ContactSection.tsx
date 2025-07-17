@@ -75,7 +75,7 @@ export function ContactSection() {
     {
       icon: MapPin,
       label: "Location",
-      value: "Mohali SAS Nagar",
+      value: "Mohali SAS Nagar,Punjab",
       href: "https://maps.google.com"
     }
   ]

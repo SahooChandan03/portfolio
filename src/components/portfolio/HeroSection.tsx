@@ -3,7 +3,7 @@ import { ChevronDown, Github, Linkedin, Twitter, Mail } from "lucide-react"
 import { Button } from "../ui/button"
 
 // Move fullText outside component to prevent re-creation on every render
-const FULL_TEXT = "Full Stack Developer"
+const FULL_TEXT = "Software Developer"
 
 export function HeroSection() {
   const [displayText, setDisplayText] = useState("")
@@ -30,10 +30,9 @@ export function HeroSection() {
   }
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Mail, href: "mailto:contact@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/chandan28Sahoo?tab=repositories", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/chandan-sahoo-7580851b9/", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:sahoo.chandan9728@gmail.com", label: "Email" },
   ]
 
   return (
@@ -51,8 +50,8 @@ export function HeroSection() {
           </div>
 
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Passionate about creating beautiful, functional, and user-friendly applications.
-            I love turning complex problems into simple, elegant solutions.
+            Passionate about building scalable, efficient, and reliable backend systems. 
+            I enjoy turning complex business logic into clean, maintainable, and high-performance code.
           </p>
 
           <div className="flex justify-center space-x-6 mb-12">

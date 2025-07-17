@@ -4,13 +4,14 @@ import { Code, Database, Globe, Smartphone, Server, Palette } from 'lucide-react
 // Description: Get personal information for the about section
 // Endpoint: GET /api/portfolio/personal-info
 // Request: {}
+//https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face
 // Response: { profileImage: string, title: string, bio: string[], keySkills: string[] }
 export const getPersonalInfo = () => {
   // Mocking the response
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
-        profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+        profileImage: "/chandan.jpg",
         title: "Passionate Software Developer",
         bio: [
           "I'm a backend-focused software developer with over 4 years of experience building scalable, secure, and high-performance web applications and APIs. I specialize in technologies like Node.js, Express, Python, PostgreSQL, and AWS services including Lambda, SQS, and EC2. I've delivered production-ready solutions for doctor platforms, blockchain dashboards, NFT marketplaces, and real-time collaboration tools.",
