@@ -52,7 +52,7 @@ export function Navigation({ activeSection }: NavigationProps) {
               className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
               onClick={() => scrollToSection("home")}
             >
-              Portfolio
+              𝓟𝓸𝓻𝓽𝓯𝓸𝓵𝓲𝓸
             </div>
 
             {/* Desktop Navigation */}
