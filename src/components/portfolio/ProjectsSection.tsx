@@ -11,6 +11,7 @@ export function ProjectsSection() {
   const [filteredProjects, setFilteredProjects] = useState<any[]>([])
   const [selectedFilter, setSelectedFilter] = useState("Web App")
   const [isVisible, setIsVisible] = useState(false)
+  const [hasDefaultFilterApplied, setHasDefaultFilterApplied] = useState(false);
 
   useEffect(() => {
     console.log("ProjectsSection component mounted")
@@ -44,6 +45,14 @@ export function ProjectsSection() {
 
     return () => observer.disconnect()
   }, [])
+
+// New useEffect to auto-select 'Web App' after projects are loaded
+  useEffect(() => {
+    if (projects && projects.categories && !hasDefaultFilterApplied) {
+      handleFilterChange('Web App');
+      setHasDefaultFilterApplied(true);
+    }
+  }, [projects, hasDefaultFilterApplied]);
 
   const handleFilterChange = (filter: string) => {
     console.log(`Filtering projects by: ${filter}`)
@@ -223,3 +232,7 @@ export function ProjectsSection() {
     </section>
   )
 }
+
+// Placeholder for EducationSection import and usage
+// import { EducationSection } from "./EducationSection"
+// <EducationSection />

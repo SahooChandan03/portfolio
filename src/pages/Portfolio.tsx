@@ -4,6 +4,7 @@ import { HeroSection } from "../components/portfolio/HeroSection"
 import { AboutSection } from "../components/portfolio/AboutSection"
 import { SkillsSection } from "../components/portfolio/SkillsSection"
 import { ProjectsSection } from "../components/portfolio/ProjectsSection"
+import { EducationSection } from "../components/portfolio/EducationSection"
 import { ContactSection } from "../components/portfolio/ContactSection"
 import { BackgroundElements } from "../components/portfolio/BackgroundElements"
 
@@ -14,7 +15,7 @@ export function Portfolio() {
     console.log("Portfolio component mounted")
     
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "contact"]
+      const sections = ["home", "about", "skills", "projects", "education", "contact"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -43,6 +44,7 @@ export function Portfolio() {
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
+        <EducationSection />
         <ContactSection />
       </main>
     </div>
