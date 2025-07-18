@@ -50,9 +50,9 @@ export function AboutSection() {
   }
 
   const stats = [
-    { icon: Code, label: "Projects Completed", value: "50+" },
-    { icon: Award, label: "Years Experience", value: "5+" },
-    { icon: Coffee, label: "Cups of Coffee", value: "1000+" },
+    { icon: Code, label: "Projects Completed", value: "12+" },
+    { icon: Award, label: "Years Experience", value: "4+" },
+    { icon: Coffee, label: "Cups of Coffee", value: "200+" },
   ]
 
   if (!personalInfo) {

@@ -9,7 +9,7 @@ import { getProjects } from "../../api/portfolio"
 export function ProjectsSection() {
   const [projects, setProjects] = useState<any>(null)
   const [filteredProjects, setFilteredProjects] = useState<any[]>([])
-  const [selectedFilter, setSelectedFilter] = useState("All")
+  const [selectedFilter, setSelectedFilter] = useState("Web App")
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -51,9 +51,13 @@ export function ProjectsSection() {
     if (filter === "All") {
       setFilteredProjects(projects.projects)
     } else {
-      setFilteredProjects(projects.projects.filter((project: any) =>
-        project.category === filter
-      ))
+      setFilteredProjects(projects.projects.filter((project: any) => {
+        if (Array.isArray(project.category)) {
+          return project.category.includes(filter)
+        } else {
+          return project.category === filter
+        }
+      }))
     }
   }
 
@@ -118,9 +122,17 @@ export function ProjectsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Badge className="bg-white/90 text-gray-800">
-                    {project.category}
-                  </Badge>
+                  {Array.isArray(project.category) ? (
+                    project.category.map((cat: string, i: number) => (
+                      <Badge key={i} className="bg-white/90 text-gray-800 mr-1">
+                        {cat}
+                      </Badge>
+                    ))
+                  ) : (
+                    <Badge className="bg-white/90 text-gray-800">
+                      {project.category}
+                    </Badge>
+                  )}
                 </div>
               </div>
 
@@ -148,23 +160,27 @@ export function ProjectsSection() {
                 </div>
 
                 <div className="flex space-x-3 pt-4">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
-                    onClick={() => window.open(project.liveUrl, '_blank')}
-                  >
-                    <ExternalLink size={16} className="mr-2" />
-                    Live Demo
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="flex-1 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-white/20 dark:border-gray-700/50"
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                  >
-                    <Github size={16} className="mr-2" />
-                    Code
-                  </Button>
+                  {((Array.isArray(project.category) && !project.category.includes("API") && !project.category.includes("Web-Scraping")) || (!Array.isArray(project.category) && project.category !== "API" && project.category !== "Web-Scraping")) && (
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                      onClick={() => window.open(project.liveUrl, '_blank')}
+                    >
+                      <ExternalLink size={16} className="mr-2" />
+                      Live Demo
+                    </Button>
+                  )}
+                  {project?.personal !== false && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="flex-1 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-white/20 dark:border-gray-700/50"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
+                      <Github size={16} className="mr-2" />
+                      Code
+                    </Button>
+                  )}
                 </div>
 
                 <Dialog>
@@ -173,7 +189,7 @@ export function ProjectsSection() {
                       View Details
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-2xl bg-white dark:bg-gray-800">
+                  <DialogContent className="max-w-2xl bg-white dark:bg-gray-800 max-h-[80vh] overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle className="text-2xl font-bold text-gray-800 dark:text-gray-200">
                         {project.title}
